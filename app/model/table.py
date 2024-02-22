@@ -24,4 +24,5 @@ class Item(db.Model):
 
     id = db.Column(db.integer, primary_key=True)
     content = db.Column (db.Text)
-     
+    id_user = db.Cloumn(db.Integer, db.ForeignKey('users.id'))
+    
