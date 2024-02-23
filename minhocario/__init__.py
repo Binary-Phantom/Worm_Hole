@@ -6,4 +6,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///minhocario.db'
 db = SQLAlchemy(app)
 
 
-from minhocario import routes
+from minhocario.admin import routes
