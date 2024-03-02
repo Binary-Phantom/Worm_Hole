@@ -4,4 +4,20 @@
 
 <div class="text-center h1 text-success"> Cadastre-se </div>
 
+<div class="container">
+    {% from "_formularioajuda.html" import render_field %}
+<form method="post" enctype="multipart/form-data">
+  <div>
+    {{ render_field(form.username) }}
+    {{ render_field(form.nickname) }}
+    {{ render_field(form.email) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+    <input type ="file" name="photo">
+
+  </div>
+  <p><input type=submit value="Registrar" class="btn-btn-info"></p>
+</form>
+</div>
+
 {% endblock content %}
