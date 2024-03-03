@@ -29,12 +29,12 @@ def addcategoria():
         db.session.commit()
         flash(f'Categoria {getcategoria} cadastrada com sucesso.', 'success')
         return redirect(url_for('addcategoria'))
-    return render_template('/products/addcategoria.html')  # Certifique-se de criar o template addcategoria.html
+    return render_template('/products/addcategoria.html')  
 
 @app.route('/additem', methods=['GET', 'POST'])
 def additem():
     produtos = Additens.query.all()
-    marcas_list = Marcas.query.all()  # Alterei o nome da variável para evitar conflito
+    marcas_list = Marcas.query.all()  
     categorias = Categoria.query.all()
     form = Addprodutos(request.form)
 
@@ -45,8 +45,8 @@ def additem():
         description = form.description.data
         stock = form.stock.data
         color = form.color.data
-        marca_id = request.form.get('marca')  # Alterei o nome da variável
-        categoria_id = request.form.get('categoria')  # Alterei o nome da variável
+        marca_id = request.form.get('marca')  
+        categoria_id = request.form.get('categoria')  
 
         addpro = Additens(
             name=name, price=price, discount=discount, description=description,
