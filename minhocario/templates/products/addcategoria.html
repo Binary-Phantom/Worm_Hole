@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            {% include "_messages.html" %}
+            <h2 class="text-center mt-5">Categoria</h2>
+            <form action="{{ url_for('addproduto') }}" method="POST">
+                <input type="text" name="produto" class="form-control" required>
+                <input type="submit" value="Nova categoria" class="btn btn-success mt-2">       
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>    
+    
+{% endblock content %}

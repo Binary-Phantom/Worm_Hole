@@ -1,4 +1,5 @@
 from flask import render_template, session, request, url_for, flash, redirect
+from werkzeug.utils import secure_filename
 from minhocario import app, db, bcrypt
 from .models import User
 from .forms import RegistrationForm,LoginFormulario
@@ -44,5 +45,5 @@ def login():
            flash(f'Olá {form.email.data} você está logado', 'success')
            return redirect(request.args.get('next')or url_for ('admin'))
        else:
-            flash('Usuário ou senha não correspondem.')
+            flash('Usuário ou senha não correspondem.', 'danger')
    return render_template ('admin/login.html',form=form, title='Página de login')

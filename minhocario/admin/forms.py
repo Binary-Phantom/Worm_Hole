@@ -1,4 +1,5 @@
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
+from werkzeug.utils import secure_filename
 
 class RegistrationForm(Form):
     username = StringField('Nome', [validators.Length(min=4, max=25)])

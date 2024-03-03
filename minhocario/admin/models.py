@@ -1,4 +1,5 @@
 from minhocario import app, db
+from werkzeug.utils import secure_filename
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
