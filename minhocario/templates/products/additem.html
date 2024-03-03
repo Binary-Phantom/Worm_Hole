@@ -21,25 +21,22 @@
             {{render_field(form.stock, class="form-control", placeholder="Estoque do produto")}}
             {{render_field(form.colors, class="form-control", placeholder="Cor do produto")}}
             
-            <label for = "produto"> Adicione um produto </label>
-            <select name="produto" id="produto" class="form-control" required>
-                <option value="">Selecione um produto</option>
-                {% for produto in produtos %}
-                <option value="produto.id">{{produto.name}}</option>
-                {% endfor %}
 
+            <label for="marca"> Adicione a marca </label>
+            <select name="marca" id="marca" class="form-control" required>
+                <option value="">Selecione uma marca</option>
+                {% for marca in marcas %}
+                <option value="{{ marca.id }}">{{ marca.name }}</option>
+                {% endfor %}
             </select>
 
-
-
-
-            <label for = "categoria"> Adicione uma categoria </label>
+            <label for="categoria"> Adicione uma categoria </label>
             <select name="categoria" id="categoria" class="form-control" required>
                 <option value="">Selecione uma categoria</option>
                 {% for categoria in categorias %}
-                <option value="categoria.id">{{categoria.name}}</option>
+                <option value="{{ categoria.id }}">{{ categoria.name }}</option>
                 {% endfor %}
-
+            </select>
 
 
 

@@ -2,6 +2,15 @@ from minhocario import db
 from werkzeug.datastructures import FileStorage
 from datetime import datetime
 
+class Marcas (db.Model):
+    id = db.Column (db.Integer, primary_key=True)
+    name = db.Column (db.String(40), nullable=False, unique=True)
+
+
+class Categorias (db.Model):
+    id = db.Column (db.Integer, primary_key=True)
+    name = db.Column (db.String(40), nullable=False, unique=True)
+
 
 
 class Additens(db.Model):
