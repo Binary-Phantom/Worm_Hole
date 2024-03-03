@@ -1,7 +1,7 @@
 from flask import render_template, session, request, url_for, flash, redirect
 from minhocario import app, db, bcrypt
 from .models import User
-from .forms import RegistrationForm
+from .forms import RegistrationForm,LoginFormulario
 import os 
 
 
@@ -9,9 +9,12 @@ import os
 
 
 
-@app.route('/')
+@app.route('/admin')
 
-def home():
+def admin():
+    if 'email' not in session:
+        flash('Por favor, Cadastre-se.', 'danger') 
+        return redirect(url_for('login'))
     return render_template ('admin/index.html', title='kekkk')
 
 
@@ -27,5 +30,19 @@ def registrar():
         db.session.commit()
 
         flash(f' {form.nickname.data} Obrigado por se cadastrar', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('login'))
     return render_template('admin/registrar.html', form=form, title="Cadastrar novo usuário")
+
+
+@app.route ('/login',methods=['GET', 'POST'])
+def login():
+   form=LoginFormulario(request.form)
+   if request.method == "POST" and form.validate():
+       user= User.query.filter_by(email=form.email.data).first()
+       if user and bcrypt.check_password_hash(user.password, form.password.data):
+           session['email'] = form.email.data 
+           flash(f'Olá {form.email.data} você está logado', 'success')
+           return redirect(request.args.get('next')or url_for ('admin'))
+       else:
+            flash('Usuário ou senha não correspondem.')
+   return render_template ('admin/login.html',form=form, title='Página de login')
