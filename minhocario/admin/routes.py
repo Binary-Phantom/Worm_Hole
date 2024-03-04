@@ -1,4 +1,5 @@
 from flask import render_template, session, request, url_for, flash, redirect
+from minhocario.products.models import Additens
 from werkzeug.utils import secure_filename
 from minhocario import app, db, bcrypt
 from .models import User
@@ -14,9 +15,10 @@ import os
 
 def admin():
     if 'email' not in session:
-        flash('Por favor, Cadastre-se.', 'danger') 
+        flash(f'Por favor, Cadastre-se.', 'danger') 
         return redirect(url_for('login'))
-    return render_template ('admin/index.html', title='kekkk')
+    produtos = Additens.query.all()
+    return render_template ('admin/index.html', title='Página inicial', produtos=produtos)
 
 
 @app.route('/registrar', methods=['GET', 'POST'])

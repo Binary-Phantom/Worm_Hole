@@ -1,3 +1,4 @@
+from minhocario.products import forms
 from minhocario import app, db
 #from werkzeug.datastructures import FileStorage
 

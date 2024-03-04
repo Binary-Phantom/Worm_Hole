@@ -1,8 +1,9 @@
 from flask import Flask 
-#from flask_uploads import IMAGES, UploadSet, configure_uploads
+from flask_uploads import IMAGES, UploadSet, configure_uploads
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.utils import secure_filename
-from werkzeug.datastructures import FileStorage
+#from products.forms import Addprodutos
+#from werkzeug.utils import secure_filename
+#from werkzeug.datastructures import FileStorage
 from flask_uploads import IMAGES, UploadSet, configure_uploads
 from flask_bcrypt import Bcrypt
 import os
